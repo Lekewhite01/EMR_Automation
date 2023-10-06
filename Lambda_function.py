@@ -15,16 +15,16 @@ def lambda_handler(event, context):
                 'Name': "Master nodes",
                 'Market': 'SPOT',
                 'InstanceRole': 'MASTER',
-                'InstanceType': 'm5.12xlarge',
-                'BidPrice': '1',
+                'InstanceType': 'm5.2xlarge',
+                'BidPrice': '0.4',
                 'InstanceCount': 1,
             },
             {
                 'Name': "Slave nodes",
                 'Market': 'SPOT',
                 'InstanceRole': 'CORE',
-                'InstanceType': 'm5.12xlarge',
-                'BidPrice': '1',
+                'InstanceType': 'm5.2xlarge',
+                'BidPrice': '0.4',
                 'InstanceCount': 2,
             },
             {
@@ -32,7 +32,7 @@ def lambda_handler(event, context):
                 'Market': 'SPOT',
                 'InstanceRole': 'TASK',
                 'InstanceType': 'm5.xlarge',
-                'BidPrice': '0.2',
+                'BidPrice': '0.1',
                 'InstanceCount': 2,
             }
         ],
@@ -51,11 +51,11 @@ def lambda_handler(event, context):
                 'spark-submit',
                 '--master', 'yarn',
                 '--deploy-mode', 'cluster',
-                '--driver-cores', '40',
-                '--executor-cores', '40',
-                '--num-executors', '80',
-                '--executor-memory', '100g',
-                '--driver-memory', '50g',
+                '--driver-cores', '10',
+                '--executor-cores', '10',
+                '--num-executors', '10',
+                '--executor-memory', '15g',
+                '--driver-memory', '10g',
                 '--py-files', 's3://datateam-ml/Insights_Extraction/Ner/ner_dependency.zip', 's3://datateam-ml/Insights_Extraction/Ner/ner_script.py'
             ]
 
@@ -92,4 +92,3 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': f'Created EMR cluster with ID: {cluster_id} and submitted Spark job.'
     }
-
