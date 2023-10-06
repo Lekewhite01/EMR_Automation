@@ -16,7 +16,7 @@ def lambda_handler(event, context):
                 'Market': 'SPOT',
                 'InstanceRole': 'MASTER',
                 'InstanceType': 'm5.2xlarge',
-                'BidPrice': '0.4',
+                'BidPrice': '0.2',
                 'InstanceCount': 1,
             },
             {
@@ -24,7 +24,7 @@ def lambda_handler(event, context):
                 'Market': 'SPOT',
                 'InstanceRole': 'CORE',
                 'InstanceType': 'm5.2xlarge',
-                'BidPrice': '0.4',
+                'BidPrice': '0.2',
                 'InstanceCount': 2,
             },
             {
